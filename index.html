@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pádel: la historia de un deporte de cristal y muro</title>
+  <meta name="description" content="Historia del pádel: su origen en Acapulco, su llegada a España, sus reglas y su expansión mundial.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Pelota fija: sigue el scroll y rebota -->
+  <div class="bola" aria-hidden="true">
+    <span class="bola__sombra"></span>
+    <span class="bola__caida">
+      <span class="bola__cuerpo"><span class="bola__giro"></span></span>
+    </span>
+  </div>
+
+  <header class="nav">
+    <a href="#top" class="nav__logo">Pádel</a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#origen">Origen</a>
+      <a href="#expansion">Expansión</a>
+      <a href="#reglas">Reglas</a>
+      <a href="#cronologia">Cronología</a>
+      <a href="#leyendas">Leyendas</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO: la pista vista desde arriba -->
+    <section class="hero turf" aria-labelledby="titulo-hero">
+      <svg class="hero__pista" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <rect class="fondo-ext" width="400" height="200"/>
+        <rect class="fondo-pista" x="20" y="10" width="360" height="180"/>
+        <g class="trazos">
+          <path pathLength="1" d="M20 10H380V190H20Z" style="--d:.1s"/>
+          <path pathLength="1" d="M75 10V190" style="--d:.7s"/>
+          <path pathLength="1" d="M325 10V190" style="--d:.7s"/>
+          <path pathLength="1" d="M75 100H325" style="--d:1.1s"/>
+          <path pathLength="1" class="trazo-red" d="M200 10V190" style="--d:.4s"/>
+        </g>
+      </svg>
+
+      <div class="hero__contenido">
+        <h1 id="titulo-hero" class="hero__titulo">Pádel</h1>
+        <div class="hero__pie">
+          <p>La historia de un deporte de cristal y muro, desde una pista en Acapulco hasta los grandes circuitos.</p>
+          <a href="#origen" class="btn">Empezar el recorrido</a>
+          <p class="hero__nota">Desliza hacia abajo: la pelota te sigue.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORIGEN -->
+    <section class="seccion seccion--exterior turf" id="origen" aria-labelledby="t-origen">
+      <div class="contenedor origen">
+        <h2 id="t-origen" class="origen__titulo">
+          <span class="origen__ano">1969</span>
+          <span class="origen__lugar">Acapulco</span>
+        </h2>
+
+        <div class="cristal origen__panel">
+          <p class="origen__frase">Poco espacio, cuatro paredes y una pelota que nunca se acaba.</p>
+        </div>
+
+        <div class="origen__texto">
+          <p>Todo empieza en Acapulco. Enrique Corcuera, empresario mexicano, ideó un juego que mezclaba el tenis con el frontón: una pista pequeña, cerrada por muros y cristal, donde la pelota rebota y cada golpe puede volver.</p>
+          <p>La idea era sencilla: un deporte que se pudiera jugar en poco espacio, sin grandes instalaciones y con una curva de aprendizaje amable para cualquier persona.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPANSIÓN -->
+    <section class="seccion seccion--pista turf" id="expansion" aria-labelledby="t-expansion">
+      <div class="contenedor">
+        <h2 id="t-expansion" class="titulo">De México al mundo</h2>
+        <ol class="ruta">
+          <li>
+            <h3 class="ruta__lugar"><span class="ruta__fecha">1974</span>Marbella</h3>
+            <p>El pádel cruza el Atlántico y llega a España. Se asocia a Marbella, donde los clubes de la Costa del Sol instalaron sus primeras pistas y lo convirtieron en un plan de moda.</p>
+          </li>
+          <li>
+            <h3 class="ruta__lugar"><span class="ruta__fecha">Años 80 y 90</span>Argentina</h3>
+            <p>Argentina lo adopta con entusiasmo y lo convierte en un fenómeno popular. Aparecen clubes, torneos locales y una generación de jugadores que hará del país una potencia mundial.</p>
+          </li>
+          <li>
+            <h3 class="ruta__lugar"><span class="ruta__fecha">Desde los 90</span>El mundo</h3>
+            <p>Con las federaciones y los circuitos profesionales, el pádel se extiende por Europa, Latinoamérica y otras regiones, sumando pistas y aficionados año tras año.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- REGLAS (interactivo) -->
+    <section class="seccion seccion--claro" id="reglas" aria-labelledby="t-reglas">
+      <div class="contenedor">
+        <h2 id="t-reglas" class="titulo">Cómo se juega</h2>
+
+        <div class="reglas" data-activa="dobles">
+          <div class="reglas__controles">
+            <div class="reglas__tabs" role="tablist" aria-label="Reglas del pádel">
+              <button type="button" role="tab" id="tab-dobles" aria-controls="panel-dobles" aria-selected="true" data-regla="dobles">Dobles y pista cerrada</button>
+              <button type="button" role="tab" id="tab-saque" aria-controls="panel-saque" aria-selected="false" tabindex="-1" data-regla="saque">El saque</button>
+              <button type="button" role="tab" id="tab-red" aria-controls="panel-red" aria-selected="false" tabindex="-1" data-regla="red">La red</button>
+              <button type="button" role="tab" id="tab-puntos" aria-controls="panel-puntos" aria-selected="false" tabindex="-1" data-regla="puntos">El marcador</button>
+            </div>
+
+            <div class="reglas__paneles">
+              <div role="tabpanel" id="panel-dobles" aria-labelledby="tab-dobles" data-regla="dobles">
+                <p>Se juega por parejas en una pista de 20 × 10 metros rodeada de muros y cristal, con paredes de hasta 4 metros. Tras el primer bote, la pelota puede rebotar en ellos y seguir en juego.</p>
+              </div>
+              <div role="tabpanel" id="panel-saque" aria-labelledby="tab-saque" data-regla="saque">
+                <p>El saque se hace por debajo de la cintura, tras dejar botar la pelota. Debe caer en el cuadro de servicio contrario, en diagonal.</p>
+              </div>
+              <div role="tabpanel" id="panel-red" aria-labelledby="tab-red" data-regla="red">
+                <p>La red divide la pista por la mitad. Mide unos 88 centímetros en el centro y 92 en los extremos, y marca la zona donde se decide el punto con la volea.</p>
+              </div>
+              <div role="tabpanel" id="panel-puntos" aria-labelledby="tab-puntos" data-regla="puntos">
+                <p>Se puntúa igual que en el tenis. Los juegos forman sets y se gana al mejor de tres.</p>
+                <div class="marcador" aria-label="Puntos: 15, 30, 40 y juego">
+                  <span>15</span><span>30</span><span>40</span><span>Juego</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="cancha">
+            <svg viewBox="0 0 400 200" role="img" aria-label="Esquema de una pista de pádel vista desde arriba">
+              <rect class="c-ext" width="400" height="200"/>
+              <rect class="c-pista" x="20" y="10" width="360" height="180"/>
+              <g class="c-lineas">
+                <path d="M20 10H380V190H20Z"/>
+                <path d="M75 10V190M325 10V190M75 100H325"/>
+              </g>
+              <path class="c-red" d="M200 10V190"/>
+
+              <g class="z z-paredes"><path class="resalte-linea" d="M20 10H380V190H20Z"/></g>
+              <g class="z z-jugadores">
+                <circle cx="120" cy="55" r="7"/><circle cx="120" cy="145" r="7"/>
+                <circle cx="280" cy="55" r="7"/><circle cx="280" cy="145" r="7"/>
+              </g>
+              <g class="z z-saque">
+                <rect class="caja" x="200" y="10" width="125" height="90"/>
+                <path class="flecha" d="M50 150Q130 60 262 52"/>
+                <circle class="jugador-saque" cx="50" cy="150" r="7"/>
+              </g>
+              <g class="z z-red"><path class="resalte-red" d="M200 10V190"/></g>
+              <g class="z z-bola">
+                <circle class="onda" cx="150" cy="100" r="12"/>
+                <circle class="pelota" cx="150" cy="100" r="7"/>
+              </g>
+            </svg>
+            <figcaption>Pista de pádel: 20 × 10 metros, vista desde arriba.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRONOLOGÍA -->
+    <section class="seccion seccion--pista turf" id="cronologia" aria-labelledby="t-crono">
+      <div class="contenedor">
+        <h2 id="t-crono" class="titulo">Cronología</h2>
+        <ol class="cronologia">
+          <li>
+            <span class="cronologia__ano">1969</span>
+            <p>Enrique Corcuera crea el pádel en Acapulco, México.</p>
+          </li>
+          <li>
+            <span class="cronologia__ano">1974</span>
+            <p>El juego llega a España y empieza a instalarse en clubes de la Costa del Sol.</p>
+          </li>
+          <li>
+            <span class="cronologia__ano">1980s</span>
+            <p>Argentina lo transforma en un deporte masivo y en su cuna moderna.</p>
+          </li>
+          <li>
+            <span class="cronologia__ano">1991</span>
+            <p>Se funda la Federación Internacional de Pádel, que organiza el deporte a nivel mundial.</p>
+          </li>
+          <li>
+            <span class="cronologia__ano">2013</span>
+            <p>Nace el World Padel Tour, el gran circuito profesional que da visibilidad a las estrellas del juego.</p>
+          </li>
+          <li>
+            <span class="cronologia__ano">Hoy</span>
+            <p>Uno de los deportes de raqueta que más crece, con torneos, pistas y aficionados en decenas de países.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- LEYENDAS -->
+    <section class="seccion seccion--claro" id="leyendas" aria-labelledby="t-leyendas">
+      <div class="contenedor">
+        <h2 id="t-leyendas" class="titulo">Quienes lo hicieron grande</h2>
+        <div class="jugadores">
+          <details class="jugador" name="leyendas">
+            <summary>
+              <span class="jugador__nombre">Fernando Belasteguín</span>
+              <span class="jugador__marca" aria-hidden="true"></span>
+            </summary>
+            <p>Argentino y una de las figuras más laureadas de la historia. Su dominio en el circuito profesional elevó el nivel técnico del deporte.</p>
+          </details>
+          <details class="jugador" name="leyendas">
+            <summary>
+              <span class="jugador__nombre">Juan Martín Díaz</span>
+              <span class="jugador__marca" aria-hidden="true"></span>
+            </summary>
+            <p>Referente de su generación, reconocido por su inteligencia táctica y su capacidad para resolver puntos en la red.</p>
+          </details>
+          <details class="jugador" name="leyendas">
+            <summary>
+              <span class="jugador__nombre">Las pistas de barrio</span>
+              <span class="jugador__marca" aria-hidden="true"></span>
+            </summary>
+            <p>Muchos campeones empezaron en clubes locales y pistas municipales. El pádel se hizo grande gracias a quienes lo jugaron por placer.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE: la red -->
+    <section class="cierre turf">
+      <div class="malla" aria-hidden="true"></div>
+      <div class="contenedor cierre__contenido">
+        <h2 class="cierre__titulo">Tu turno</h2>
+        <p>Coge una raqueta, busca una pista y forma parte de la historia de un deporte que sigue creciendo.</p>
+        <a href="#top" class="btn btn--invertido">Volver arriba</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Pádel: la historia de un deporte de cristal y muro.</p>
+  </footer>
+
+  <script>
+  (() => {
+    const root = document.documentElement;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Pelota que sigue el scroll ---------- */
+    const bola = document.querySelector('.bola');
+    const TAU = Math.PI * 2;
+    let ps = 0, h = 0, moving = false, idleTimer = null, running = false;
+
+    function medidas() {
+      const docH = Math.max(1, root.scrollHeight - innerHeight);
+      return { docH, p: Math.min(1, Math.max(0, scrollY / docH)) };
+    }
+
+    function pintar(inmediato) {
+      const { docH, p } = medidas();
+      ps = inmediato ? p : ps + (p - ps) * 0.14;
+
+      const ancho = innerWidth;
+      const amp = ancho < 700 ? 0.34 : 0.38;
+      const x = ancho * (0.5 + amp * Math.sin(ps * TAU * 5 + 0.34));
+      const suelo = innerHeight * 0.8;
+
+      const rebotes = Math.max(6, Math.round(root.scrollHeight / 260));
+      const t = (ps * rebotes) % 1;
+      const altoMax = Math.min(120, innerHeight * 0.16);
+      const objetivo = moving ? 4 * t * (1 - t) * altoMax : 0;
+      h += (objetivo - h) * 0.2;
+
+      const aplasta = Math.max(0, Math.min(1, (14 - h) / 14));
+      const sy = 1 - aplasta * 0.22;
+      const sx = 1 + aplasta * 0.16;
+
+      bola.style.transform = `translate3d(${x.toFixed(1)}px, ${suelo.toFixed(1)}px, 0)`;
+      bola.style.setProperty('--h', h.toFixed(1) + 'px');
+      bola.style.setProperty('--sx', sx.toFixed(3));
+      bola.style.setProperty('--sy', sy.toFixed(3));
+      bola.style.setProperty('--sombra', (1 - (h / altoMax) * 0.45).toFixed(3));
+      bola.style.setProperty('--giro', (ps * docH * 0.6).toFixed(1) + 'deg');
+      root.style.setProperty('--p', ps.toFixed(4));
+
+      return Math.abs(p - ps) > 0.0004 || Math.abs(h - objetivo) > 0.3 || moving;
+    }
+
+    function bucle() {
+      running = pintar(false);
+      if (running) requestAnimationFrame(bucle);
+    }
+    function despertar() {
+      if (!running) { running = true; requestAnimationFrame(bucle); }
+    }
+
+    if (reduce) {
+      pintar(true);
+      addEventListener('resize', () => pintar(true));
+    } else {
+      pintar(true);
+      addEventListener('scroll', () => {
+        moving = true;
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => { moving = false; despertar(); }, 140);
+        despertar();
+      }, { passive: true });
+      addEventListener('resize', despertar);
+    }
+
+    /* ---------- Reglas: pista interactiva ---------- */
+    const reglas = document.querySelector('.reglas');
+    if (reglas) {
+      const tabs = [...reglas.querySelectorAll('[role="tab"]')];
+      const paneles = [...reglas.querySelectorAll('[role="tabpanel"]')];
+
+      function activar(id, enfocar) {
+        reglas.dataset.activa = id;
+        tabs.forEach(t => {
+          const on = t.dataset.regla === id;
+          t.setAttribute('aria-selected', on);
+          t.tabIndex = on ? 0 : -1;
+          if (on && enfocar) t.focus();
+        });
+        paneles.forEach(p => { p.hidden = p.dataset.regla !== id; });
+      }
+
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => activar(t.dataset.regla));
+        t.addEventListener('keydown', e => {
+          let n = null;
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+          if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+          if (n !== null) { e.preventDefault(); activar(tabs[n].dataset.regla, true); }
+        });
+      });
+      activar('dobles');
+    }
+  })();
+  </script>
+</body>
+</html>
